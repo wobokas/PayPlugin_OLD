@@ -78,8 +78,8 @@ final class NotifyAction implements ActionInterface, ApiAwareInterface
 
         $this->openPayUBridge->setAuthorizationDataApi(
             $this->api['environment'],
-            $this->api['pos_id'],
-            $this->api['signature_key']
+            $this->api['signature_key'],
+            $this->api['pos_id']
         );
 
 

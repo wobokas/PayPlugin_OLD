@@ -47,6 +47,6 @@ final class OpenPayUBridge implements OpenPayUBridgeInterface
      */
     public function consumeNotification($data)
     {
-        \OpenPayU_Order::consumeNotification($data);
+        return \OpenPayU_Order::consumeNotification($data);
     }
 }

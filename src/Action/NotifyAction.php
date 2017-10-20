@@ -84,7 +84,9 @@ final class NotifyAction implements ActionInterface, ApiAwareInterface
 
 
         try {
-            $result = $this->openPayUBridge->consumeNotification($_POST);
+            $body = file_get_contents('php://input');
+            $data = trim($body);
+            $result = $this->openPayUBridge->consumeNotification($data);
             $orderId = $result->getResponse()->order->orderId;
 
             if (true === (bool)$orderId) {

@@ -90,11 +90,17 @@ final class NotifyAction implements ActionInterface, ApiAwareInterface
             $orderId = $result->getResponse()->order->orderId;
 
             if (true === (bool)$orderId) {
-                $order = $this->openPayUBridge->retrieve($orderId);
+                //$order = $this->openPayUBridge->retrieve($orderId);
 
+                $model = $request->getModel();
+                $model['statusPayU'] = $result->getResponse()->order->status;
+                $request->setModel($model);
+                
+                /*
                 if (OpenPayUBridgeInterface::SUCCESS_API_STATUS === $order->getStatus()) {
                     $payment->setState(PaymentInterface::STATE_COMPLETED);
                 }
+                */
             }
 
         } catch (PayUException $e) {
